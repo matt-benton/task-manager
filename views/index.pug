@@ -5,7 +5,8 @@ block content
   p Welcome to my #{title}
   ul 
     each objective in objectives
-      li= objective.text
+      a(href=`/objectives/${objective.id}`)
+        li= objective.text
   hr
   form(action="/objectives" method="POST")
     input(type="text" name="text" id="text")

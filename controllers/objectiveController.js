@@ -11,3 +11,9 @@ exports.store = async (req, res) => {
     await new Objective(req.body).save()
     res.redirect('/')
 }
+
+exports.show = async (req, res) => {
+    const objective = await Objective.findById(req.params.id)
+
+    res.render('showObjective', { objective })
+}
