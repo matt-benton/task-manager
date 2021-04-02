@@ -19,6 +19,7 @@ mongoose.connection.on('error', err => {
 
 // import all of our models
 require('./models/Objective')
+require('./models/Subtask')
 
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')

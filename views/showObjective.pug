@@ -3,5 +3,18 @@ extends layout
 block content
 
   h1= objective.text 
+
+  pre= objective
+
+  ul
+    each subtask in objective.subtasks 
+      li= subtask.text
+
+  hr
+  h2 Actions
   form(action=`/objectives/${objective.id}?_method=DELETE` method="POST")
     input(type="submit" value="Delete")
+
+  form(action=`/objectives/${objective.id}/subtasks` method="POST")
+    input(type="text" name="text")
+    input(type="submit" value="Add")

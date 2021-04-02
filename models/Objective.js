@@ -8,7 +8,14 @@ const objectiveSchema = new mongoose.Schema({
     },
     completed: {
         type: Boolean,
+        default: 0,
     },
+    subtasks: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Subtask',
+        },
+    ],
 })
 
 module.exports = mongoose.model('Objective', objectiveSchema)
