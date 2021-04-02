@@ -17,3 +17,9 @@ exports.show = async (req, res) => {
 
     res.render('showObjective', { objective })
 }
+
+exports.destroy = async (req, res) => {
+    await Objective.findByIdAndDelete(req.params.id)
+
+    res.redirect('/')
+}
