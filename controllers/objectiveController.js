@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const Objective = mongoose.model('Objective')
+const Subtask = mongoose.model('Subtask')
 
 exports.index = async (req, res) => {
     const objectives = await Objective.find()
@@ -19,7 +20,9 @@ exports.show = async (req, res) => {
 }
 
 exports.destroy = async (req, res) => {
-    await Objective.findByIdAndDelete(req.params.id)
+    await Objective.findOneAndDelete({ _id: req.params.id }, async function (err, objective) {
+        await Subtask.deleteMany({ objective: objective._id })
+    })
 
     res.redirect('/')
 }
