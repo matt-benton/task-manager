@@ -8,7 +8,11 @@ block content
 
   ul
     each subtask in objective.subtasks 
-      li= subtask.text
+      li
+        div
+          span #{subtask.text}
+          form(action=`/objectives/${objective.id}/subtasks/${subtask.id}?_method=DELETE` method="POST")
+            input(type="submit" value="Delete")
 
   hr
   h2 Actions

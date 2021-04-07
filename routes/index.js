@@ -11,5 +11,6 @@ router.delete('/objectives/:id', objectiveController.destroy)
 
 // subtasks
 router.post('/objectives/:objective_id/subtasks', subtaskController.store)
+router.delete('/objectives/:objective_id/subtasks/:subtask_id', subtaskController.destroy)
 
 module.exports = router
