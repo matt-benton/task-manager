@@ -1,16 +1,22 @@
 const mongoose = require('mongoose')
 const Objective = mongoose.model('Objective')
 const Subtask = mongoose.model('Subtask')
-
-exports.index = async (req, res) => {
-    const objectives = await Objective.find()
-
-    res.render('index', { title: 'Objectives', objectives })
-}
+const Goal = mongoose.model('Goal')
 
 exports.store = async (req, res) => {
-    await new Objective(req.body).save()
-    res.redirect('/')
+    let goal = await Goal.findById(req.params.goal_id)
+
+    let objective = await new Objective({
+        text: req.body.text,
+        goal: goal._id,
+    })
+    await objective.save()
+
+    goal.objectives.push(objective._id)
+
+    await goal.save()
+
+    res.redirect(`/goals/${goal._id}`)
 }
 
 exports.show = async (req, res) => {
@@ -20,9 +26,12 @@ exports.show = async (req, res) => {
 }
 
 exports.destroy = async (req, res) => {
-    await Objective.findOneAndDelete({ _id: req.params.id }, async function (err, objective) {
-        await Subtask.deleteMany({ objective: objective._id })
-    })
+    await Objective.findOneAndDelete(
+        { _id: req.params.objective_id },
+        async function (err, objective) {
+            await Subtask.deleteMany({ objective: objective._id })
+        },
+    )
 
-    res.redirect('/')
+    res.redirect(`/goals/${req.params.goal_id}`)
 }

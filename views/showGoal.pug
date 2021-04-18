@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h1= goal.name 
+
+  pre= goal.objectives
+
+  ul
+    each objective in goal.objectives
+      li
+        div
+          span #{objective.text}
+          form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=DELETE` method="POST")
+            input(type="submit" value="Delete")
+
+  hr
+  h2 Actions
+  //- form(action=`/objectives/${objective.id}?_method=DELETE` method="POST")
+  //-   input(type="submit" value="Delete")
+
+  form(action=`/goals/${goal.id}/objectives` method="POST")
+    input(type="text" name="text")
+    input(type="submit" value="Add")

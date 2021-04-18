@@ -10,6 +10,11 @@ const objectiveSchema = new mongoose.Schema({
         type: Boolean,
         default: 0,
     },
+    goal: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Goal',
+    },
     subtasks: [
         {
             type: mongoose.Schema.Types.ObjectId,

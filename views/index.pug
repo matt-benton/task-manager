@@ -4,10 +4,13 @@ block content
   h1= title
   p Welcome to my #{title}
   ul 
-    each objective in objectives
-      a(href=`/objectives/${objective.id}`)
-        li= objective.text
+    each goal in goals
+      a(href=`/goals/${goal.id}`)
+        li= goal.name
   hr
-  form(action="/objectives" method="POST")
-    input(type="text" name="text" id="text")
+  form(action="/goals" method="POST")
+    label(for="name") Name
+    input(type="text" name="name" id="name")
+    label(for="description") Description
+    textarea(name="description" id="description")
     input(type="submit" value="Submit")

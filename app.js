@@ -18,6 +18,7 @@ mongoose.connection.on('error', err => {
 })
 
 // import all of our models
+require('./models/Goal')
 require('./models/Objective')
 require('./models/Subtask')
 
