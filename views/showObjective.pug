@@ -1,0 +1,19 @@
+extends layout
+
+block content
+
+  h1= objective.text 
+    if (objective.completed)
+      span &nbsp;
+      span.badge.badge-sm= "Complete"
+  h2
+    a(href=`/goals/${objective.goal.id}`) #{objective.goal.name}
+  ul 
+    each subtask in objective.subtasks
+      li= subtask.text
+  hr
+  h2 Actions 
+
+  form(action=`/objectives/${objective.id}/subtasks` method="POST")
+    input(type="text" name="text")
+    input(type="submit" value="Add")

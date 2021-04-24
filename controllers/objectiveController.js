@@ -20,7 +20,9 @@ exports.store = async (req, res) => {
 }
 
 exports.show = async (req, res) => {
-    const objective = await Objective.findById(req.params.id).populate('subtasks')
+    const objective = await Objective.findById(req.params.objective_id)
+        .populate('goal')
+        .populate('subtasks')
 
     res.render('showObjective', { objective })
 }
