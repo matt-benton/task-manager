@@ -8,6 +8,8 @@ const subtaskController = require('../controllers/subtaskController')
 router.get('/', goalController.index)
 router.post('/goals', goalController.store)
 router.get('/goals/:id', goalController.show)
+router.get('/goals/:id/edit', goalController.edit)
+router.put('/goals/:id', goalController.update)
 
 // objectives
 router.post('/goals/:goal_id/objectives', objectiveController.store)

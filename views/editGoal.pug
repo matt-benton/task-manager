@@ -1,0 +1,11 @@
+extends layout 
+
+block content 
+
+  h1= `Edit ${goal.name}`
+  form(action=`/goals/${goal.id}?_method=PUT` method="POST") 
+    label(for="name") Name 
+    input(type="text" id="name" name="name" value=`${goal.name}`)
+    label(for="description") Description
+    textarea(name="description" id="description")= goal.description
+    input(type="submit" value="Save")

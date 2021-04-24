@@ -17,3 +17,15 @@ exports.show = async (req, res) => {
 
     res.render('showGoal', { goal })
 }
+
+exports.edit = async (req, res) => {
+    const goal = await Goal.findById(req.params.id)
+
+    res.render('editGoal', { goal })
+}
+
+exports.update = async (req, res) => {
+    await Goal.findOneAndUpdate({ _id: req.params.id }, req.body).exec()
+
+    res.redirect(`/goals/${req.params.id}`)
+}

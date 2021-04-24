@@ -28,10 +28,7 @@ exports.show = async (req, res) => {
 }
 
 exports.update = async (req, res) => {
-    const objective = await Objective.findOneAndUpdate(
-        { _id: req.params.objective_id },
-        req.body,
-    ).exec()
+    await Objective.findOneAndUpdate({ _id: req.params.objective_id }, req.body).exec()
 
     res.redirect(`/goals/${req.params.goal_id}`)
 }
