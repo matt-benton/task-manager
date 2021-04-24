@@ -1,0 +1,36 @@
+:root {
+    --linkColor: #883535;
+    --backgroundColor: #f5f5f5;
+
+    /* font size */
+    --text-xs: 1.2rem;
+    --text-sm: 1.4rem;
+    --text-base: 1.6rem;
+    --text-lg: 1.8rem;
+    --text-xl: 2rem;
+    --text-2xl: 2.4rem;
+    --text-3xl: 3rem;
+    --text-4xl: 3.6rem;
+    --text-5xl: 4.8rem;
+    --text-6xl: 6rem;
+    --text-7xl: 7.2rem;
+    --text-8xl: 8.4rem;
+
+    /* spacing */
+    --sp-0: 0;
+    --sp-1: 0.4rem;
+    --sp-2: 0.8rem;
+    --sp-3: 1.2rem;
+    --sp-4: 1.6rem;
+    --sp-5: 2.4rem;
+    --sp-6: 3.2rem;
+    --sp-7: 4.8rem;
+    --sp-8: 9.6rem;
+    --sp-9: 12.8rem;
+    --sp-10: 19.2rem;
+    --sp-11: 25.6rem;
+    --sp-12: 38.4rem;
+    --sp-13: 51.2rem;
+    --sp-14: 64rem;
+    --sp-15: 76.8rem;
+}

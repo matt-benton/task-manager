@@ -1,8 +1,43 @@
+@import './variables.css';
+
+:root {
+    font-size: 62.5%;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: var(--text-base);
+    background-color: var(--backgroundColor);
+    margin: var(--sp-1) auto;
+    padding: 0 var(--sp-3);
+    max-width: 1200px;
 }
 
 a {
-  color: #00B7FF;
+    color: var(--linkColor);
+}
+
+#goals-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: var(--sp-3);
+    padding-left: 0;
+}
+
+#goals-list > li {
+    list-style-type: none;
+}
+
+#goals-list a {
+    text-decoration: none;
+}
+
+.goal-card {
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding: var(--sp-9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--text-3xl);
 }
