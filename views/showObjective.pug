@@ -8,9 +8,27 @@ block content
       span.badge.badge-sm= "Complete"
   h2
     a(href=`/goals/${objective.goal.id}`) #{objective.goal.name}
-  ul 
-    each subtask in objective.subtasks
-      li= subtask.text
+  h4 Subtasks
+  ul.objectives-list
+    each subtask in objective.subtasks.filter(task => !task.completed)
+      li
+        span= subtask.text
+        .objective-actions 
+          form(action=`/objectives/${objective.id}/subtasks/${subtask.id}?_method=PUT` method="POST")
+            input(type="hidden" name="completed" value="1")
+            input(type="submit" value="Mark as Complete")
+          form(action=`/objectives/${objective.id}/subtasks/${subtask.id}?_method=DELETE` method="POST")
+            input(type="submit" value="Delete")
+  if objective.subtasks.filter(task => task.completed).length > 0
+    h4 Completed Subtasks
+    ul.objectives-list 
+      each subtask in objective.subtasks.filter(task => task.completed)
+        li
+          span= subtask.text
+          .objective-actions 
+            form(action=`/objectives/${objective.id}/subtasks/${subtask.id}?_method=PUT` method="POST")
+              input(type="hidden" name="completed" value="0")
+              input(type="submit" value="Mark as Incomplete")
   hr
   h2 Actions 
 

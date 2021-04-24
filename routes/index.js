@@ -17,6 +17,7 @@ router.delete('/goals/:goal_id/objectives/:objective_id', objectiveController.de
 
 // subtasks
 router.post('/objectives/:objective_id/subtasks', subtaskController.store)
+router.put('/objectives/:objective_id/subtasks/:subtask_id', subtaskController.update)
 router.delete('/objectives/:objective_id/subtasks/:subtask_id', subtaskController.destroy)
 
 module.exports = router

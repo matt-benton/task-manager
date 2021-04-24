@@ -18,6 +18,12 @@ exports.store = async (req, res) => {
     res.redirect(`/objectives/${objective._id}`)
 }
 
+exports.update = async (req, res) => {
+    await Subtask.findOneAndUpdate({ _id: req.params.subtask_id }, req.body).exec()
+
+    res.redirect(`/objectives/${req.params.objective_id}`)
+}
+
 exports.destroy = async (req, res) => {
     // remove the subtask from its objective
     await Objective.findById(req.params.objective_id, function (err, objective) {
