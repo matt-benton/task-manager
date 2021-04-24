@@ -4,6 +4,8 @@ block content
 
   h1= goal.name 
 
+  a(href="/") Back to Goals
+
   h4 Objectives
   ul.objectives-list
     each objective in goal.objectives.filter(obj => !obj.completed)
