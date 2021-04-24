@@ -41,3 +41,23 @@ a {
     align-items: center;
     font-size: var(--text-3xl);
 }
+
+.objectives-list {
+    list-style-type: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: var(--sp-1);
+}
+
+.objectives-list > li {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    background-color: var(--cardBg);
+    border-radius: 15px;
+    padding: var(--sp-3);
+}
+
+.objective-actions {
+    display: flex;
+}

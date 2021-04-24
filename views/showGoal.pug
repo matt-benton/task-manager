@@ -4,15 +4,32 @@ block content
 
   h1= goal.name 
 
-  pre= goal.objectives
-
-  ul
-    each objective in goal.objectives
+  h4 Objectives
+  ul.objectives-list
+    each objective in goal.objectives.filter(obj => !obj.completed)
       li
-        div
-          span #{objective.text}
+        span #{objective.text}
+        span #{objective.completed}
+        .objective-actions
+          form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=PUT` method="POST")
+            input(type="hidden" name="completed" value="1")
+            input(type="submit" value="Mark as Complete")
           form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=DELETE` method="POST")
             input(type="submit" value="Delete")
+    
+  if goal.objectives.filter(obj => obj.completed).length > 0
+    h4 Completed Objectives
+    ul.objectives-list
+      each objective in goal.objectives.filter(obj => obj.completed)
+        li
+          span #{objective.text}
+          span #{objective.completed}
+          .objective-actions
+            form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=PUT` method="POST")
+              input(type="hidden" name="completed" value="0")
+              input(type="submit" value="Mark as Incomplete")
+            form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=DELETE` method="POST")
+              input(type="submit" value="Delete")
 
   hr
   h2 Actions
