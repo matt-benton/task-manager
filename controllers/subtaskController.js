@@ -21,7 +21,10 @@ exports.store = async (req, res) => {
 exports.update = async (req, res) => {
     await Subtask.findOneAndUpdate({ _id: req.params.subtask_id }, req.body).exec()
 
-    res.redirect(`/goals/${req.params.goal_id}/objectives/${req.params.objective_id}`)
+    // need the goal id to redirect
+    let objective = await Objective.findById(req.params.objective_id)
+
+    res.redirect(`/goals/${objective.goal.id}/objectives/${req.params.objective_id}`)
 }
 
 exports.destroy = async (req, res) => {
