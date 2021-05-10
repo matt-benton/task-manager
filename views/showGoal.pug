@@ -1,10 +1,15 @@
 extends layout
 
+include mixins/icons/_pencil
+
 block content
 
-  h1= goal.name 
+  h1 #{goal.name} 
+    a(href=`/goals/${goal.id}/edit`)
+      +pencil
+  p= goal.description
 
-  a(href="/") Back to Goals
+  //- a(href="/") Back to Goals
 
   h4 Objectives
   ul.objectives-list
@@ -18,6 +23,11 @@ block content
             input(type="submit" value="Mark as Complete")
           form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=DELETE` method="POST")
             input(type="submit" value="Delete")
+
+  
+  form(action=`/goals/${goal.id}/objectives` method="POST")
+    input(type="text" name="text")
+    input(type="submit" value="Add")
     
   if goal.objectives.filter(obj => obj.completed).length > 0
     h4 Completed Objectives
@@ -31,13 +41,7 @@ block content
               input(type="hidden" name="completed" value="0")
               input(type="submit" value="Mark as Incomplete")
 
-  hr
-  h2 Actions
+  //- hr
+  //- h2 Actions
   //- form(action=`/objectives/${objective.id}?_method=DELETE` method="POST")
   //-   input(type="submit" value="Delete")
-
-  form(action=`/goals/${goal.id}/objectives` method="POST")
-    input(type="text" name="text")
-    input(type="submit" value="Add")
-
-  a(href=`/goals/${goal.id}/edit`) Edit Goal

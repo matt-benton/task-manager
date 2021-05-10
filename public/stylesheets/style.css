@@ -10,11 +10,37 @@ body {
     background-color: var(--backgroundColor);
     margin: var(--sp-1) auto;
     padding: 0 var(--sp-3);
-    max-width: 1200px;
+    max-width: 400px;
 }
 
 a {
     color: var(--linkColor);
+}
+
+h1 svg {
+    height: var(--text-base);
+}
+
+input[type='text'] {
+    border: 1px solid rgb(188, 180, 180);
+    border-radius: 5px;
+    box-shadow: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: var(--sp-1) var(--sp-2);
+    font-size: var(--text-base);
+}
+
+button,
+input[type='submit'] {
+    font-size: var(--text-base);
+    padding: var(--sp-1) var(--sp-2);
+    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid rgb(188, 180, 180);
 }
 
 #goals-list {
