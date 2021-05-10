@@ -16,6 +16,7 @@ router.post('/goals/:goal_id/objectives', objectiveController.store)
 router.get('/goals/:goal_id/objectives/:objective_id', objectiveController.show)
 router.get('/goals/:goal_id/objectives/:objective_id/edit', objectiveController.edit)
 router.put('/goals/:goal_id/objectives/:objective_id', objectiveController.update)
+router.put('/goals/:goal_id/objectives/:objective_id/complete', objectiveController.complete)
 router.delete('/goals/:goal_id/objectives/:objective_id', objectiveController.destroy)
 
 // subtasks

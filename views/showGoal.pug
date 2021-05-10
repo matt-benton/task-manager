@@ -13,7 +13,7 @@ block content
         span 
           a(href=`/goals/${goal.id}/objectives/${objective.id}`) #{objective.text}
         .objective-actions
-          form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=PUT` method="POST")
+          form(action=`/goals/${goal.id}/objectives/${objective.id}/complete?_method=PUT` method="POST")
             input(type="hidden" name="completed" value="1")
             input(type="submit" value="Mark as Complete")
           form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=DELETE` method="POST")
@@ -27,7 +27,7 @@ block content
           span 
             a(href=`/goals/${goal.id}/objectives/${objective.id}`) #{objective.text}
           .objective-actions
-            form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=PUT` method="POST")
+            form(action=`/goals/${goal.id}/objectives/${objective.id}/complete?_method=PUT` method="POST")
               input(type="hidden" name="completed" value="0")
               input(type="submit" value="Mark as Incomplete")
 

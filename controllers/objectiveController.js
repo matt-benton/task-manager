@@ -39,6 +39,12 @@ exports.update = async (req, res) => {
     res.redirect(`/goals/${req.params.goal_id}/objectives/${req.params.objective_id}`)
 }
 
+exports.complete = async (req, res) => {
+    await Objective.findOneAndUpdate({ _id: req.params.objective_id }, req.body).exec()
+
+    res.redirect(`/goals/${req.params.goal_id}`)
+}
+
 exports.destroy = async (req, res) => {
     await Objective.findOneAndDelete(
         { _id: req.params.objective_id },
