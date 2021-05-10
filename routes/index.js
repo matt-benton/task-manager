@@ -13,7 +13,8 @@ router.put('/goals/:id', goalController.update)
 
 // objectives
 router.post('/goals/:goal_id/objectives', objectiveController.store)
-router.get('/objectives/:objective_id', objectiveController.show)
+router.get('/goals/:goal_id/objectives/:objective_id', objectiveController.show)
+router.get('/goals/:goal_id/objectives/:objective_id/edit', objectiveController.edit)
 router.put('/goals/:goal_id/objectives/:objective_id', objectiveController.update)
 router.delete('/goals/:goal_id/objectives/:objective_id', objectiveController.destroy)
 

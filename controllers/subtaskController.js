@@ -15,7 +15,7 @@ exports.store = async (req, res) => {
 
     await objective.save()
 
-    res.redirect(`/objectives/${objective._id}`)
+    res.redirect(`/goals/${objective.goal.id}/objectives/${objective._id}`)
 }
 
 exports.update = async (req, res) => {

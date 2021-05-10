@@ -35,3 +35,4 @@ block content
   form(action=`/objectives/${objective.id}/subtasks` method="POST")
     input(type="text" name="text")
     input(type="submit" value="Add")
+  a(href=`/goals/${objective.goal.id}/objectives/${objective.id}/edit`) Edit Objective

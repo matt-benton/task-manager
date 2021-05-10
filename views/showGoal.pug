@@ -11,7 +11,7 @@ block content
     each objective in goal.objectives.filter(obj => !obj.completed)
       li
         span 
-          a(href=`/objectives/${objective.id}`) #{objective.text}
+          a(href=`/goals/${goal.id}/objectives/${objective.id}`) #{objective.text}
         .objective-actions
           form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=PUT` method="POST")
             input(type="hidden" name="completed" value="1")
@@ -25,7 +25,7 @@ block content
       each objective in goal.objectives.filter(obj => obj.completed)
         li
           span 
-            a(href=`/objectives/${objective.id}`) #{objective.text}
+            a(href=`/goals/${goal.id}/objectives/${objective.id}`) #{objective.text}
           .objective-actions
             form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=PUT` method="POST")
               input(type="hidden" name="completed" value="0")

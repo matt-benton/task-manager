@@ -27,10 +27,16 @@ exports.show = async (req, res) => {
     res.render('showObjective', { objective })
 }
 
+exports.edit = async (req, res) => {
+    const objective = await Objective.findById(req.params.objective_id)
+
+    res.render('editObjective', { objective })
+}
+
 exports.update = async (req, res) => {
     await Objective.findOneAndUpdate({ _id: req.params.objective_id }, req.body).exec()
 
-    res.redirect(`/goals/${req.params.goal_id}`)
+    res.redirect(`/goals/${req.params.goal_id}/objectives/${req.params.objective_id}`)
 }
 
 exports.destroy = async (req, res) => {
