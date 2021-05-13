@@ -1,6 +1,9 @@
 extends layout
 
 include mixins/icons/_pencil
+include mixins/icons/_check
+include mixins/icons/_trash
+include mixins/icons/_x-circle
 
 block narrow-content
 
@@ -20,10 +23,11 @@ block narrow-content
         .objective-actions
           form(action=`/goals/${goal.id}/objectives/${objective.id}/complete?_method=PUT` method="POST")
             input(type="hidden" name="completed" value="1")
-            input(type="submit" value="Mark as Complete")
+            button(type="submit" class="icon-btn btn-transparent")
+              +check
           form(action=`/goals/${goal.id}/objectives/${objective.id}?_method=DELETE` method="POST")
-            input(type="submit" value="Delete")
-
+            button(type="submit" class="icon-btn btn-transparent")
+              +trash
   
   form(action=`/goals/${goal.id}/objectives` method="POST")
     input(type="text" name="text")
@@ -39,7 +43,8 @@ block narrow-content
           .objective-actions
             form(action=`/goals/${goal.id}/objectives/${objective.id}/complete?_method=PUT` method="POST")
               input(type="hidden" name="completed" value="0")
-              input(type="submit" value="Mark as Incomplete")
+              button(type="submit" class="icon-btn btn-transparent")
+                +x-circle
 
   //- hr
   //- h2 Actions

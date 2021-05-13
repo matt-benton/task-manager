@@ -29,7 +29,7 @@ exports.update = async (req, res) => {
 
 exports.destroy = async (req, res) => {
     // remove the subtask from its objective
-    await Objective.findById(req.params.objective_id, function (err, objective) {
+    let objective = await Objective.findById(req.params.objective_id, function (err, objective) {
         objective.subtasks.remove(req.params.subtask_id)
         objective.save()
     }).exec()
@@ -37,5 +37,5 @@ exports.destroy = async (req, res) => {
     // delete the subtask
     await Subtask.findByIdAndDelete(req.params.subtask_id)
 
-    res.redirect(`/objectives/${req.params.objective_id}`)
+    res.redirect(`/goals/${objective.goal.id}/objectives/${req.params.objective_id}`)
 }

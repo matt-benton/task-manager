@@ -50,6 +50,7 @@ input[type='text'] {
     -moz-appearance: none;
     padding: var(--sp-1) var(--sp-2);
     font-size: var(--text-base);
+    line-height: 1.2;
 }
 
 button,
@@ -61,6 +62,31 @@ input[type='submit'] {
     -webkit-appearance: none;
     -moz-appearance: none;
     border: 1px solid rgb(188, 180, 180);
+    cursor: pointer;
+    display: inline-flex;
+    line-height: 1.2;
+    vertical-align: center;
+    background-color: var(--buttonBg);
+    transition: background-color 0.3s;
+}
+
+button svg {
+    height: 1.2em;
+    width: 1.2em;
+}
+
+.icon-btn {
+    padding-left: var(--sp-1);
+    padding-right: var(--sp-1);
+}
+
+.btn-transparent {
+    background: transparent;
+    border-color: transparent;
+}
+
+.btn-transparent:hover {
+    background-color: var(--buttonBg);
 }
 
 #goals-list {
