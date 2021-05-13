@@ -3,6 +3,7 @@ extends layout
 include mixins/icons/_check
 include mixins/icons/_trash
 include mixins/icons/_x-circle
+include mixins/icons/_pencil
 
 block narrow-content
 
@@ -10,6 +11,9 @@ block narrow-content
     if (objective.completed)
       span &nbsp;
       span.badge.badge-sm= "Complete"
+      span &nbsp;
+    a(href=`/goals/${objective.goal.id}/objectives/${objective.id}/edit`)
+      +pencil
   h2
     a(href=`/goals/${objective.goal.id}`) #{objective.goal.name}
   h4 Subtasks
@@ -25,6 +29,12 @@ block narrow-content
           form(action=`/objectives/${objective.id}/subtasks/${subtask.id}?_method=DELETE` method="POST")
             button(type="submit" class="icon-btn btn-transparent")
               +trash
+
+  
+  form(action=`/objectives/${objective.id}/subtasks` method="POST")
+    input(type="text" name="text")
+    input(type="submit" value="Add")
+
   if objective.subtasks.filter(task => task.completed).length > 0
     h4 Completed Subtasks
     ul.objectives-list 
@@ -39,7 +49,4 @@ block narrow-content
   hr
   h2 Actions 
 
-  form(action=`/objectives/${objective.id}/subtasks` method="POST")
-    input(type="text" name="text")
-    input(type="submit" value="Add")
   a(href=`/goals/${objective.goal.id}/objectives/${objective.id}/edit`) Edit Objective
