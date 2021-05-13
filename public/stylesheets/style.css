@@ -21,6 +21,21 @@ h1 svg {
     height: var(--text-base);
 }
 
+nav svg {
+    height: var(--text-4xl);
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    border-radius: 50%;
+    padding: var(--sp-1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+nav svg:hover {
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgb(193, 191, 197);
+}
+
 input[type='text'] {
     border: 1px solid rgb(188, 180, 180);
     border-radius: 5px;
