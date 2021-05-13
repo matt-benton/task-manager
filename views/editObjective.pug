@@ -1,6 +1,6 @@
 extends layout 
 
-block content 
+block narrow-content 
 
   h1= `Edit ${objective.text}`
   form(action=`/goals/${objective.goal.id}/objectives/${objective.id}?_method=PUT` method="POST") 
