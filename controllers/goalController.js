@@ -17,13 +17,13 @@ exports.store = async (req, res) => {
 exports.show = async (req, res) => {
     const goal = await Goal.findById(req.params.id).populate('objectives')
 
-    res.render('showGoal', { goal })
+    res.render('showGoal', { title: goal.name, goal })
 }
 
 exports.edit = async (req, res) => {
     const goal = await Goal.findById(req.params.id)
 
-    res.render('editGoal', { goal })
+    res.render('editGoal', { title: `Edit ${goal.name}`, goal })
 }
 
 exports.update = async (req, res) => {

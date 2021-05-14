@@ -24,13 +24,13 @@ exports.show = async (req, res) => {
         .populate('goal')
         .populate('subtasks')
 
-    res.render('showObjective', { objective })
+    res.render('showObjective', { title: objective.text, objective })
 }
 
 exports.edit = async (req, res) => {
     const objective = await Objective.findById(req.params.objective_id)
 
-    res.render('editObjective', { objective })
+    res.render('editObjective', { title: `Edit ${objective.text}`, objective })
 }
 
 exports.update = async (req, res) => {
