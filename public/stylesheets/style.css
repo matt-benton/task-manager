@@ -165,10 +165,14 @@ button svg {
 
 .objectives-list > li {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr min-content;
     background-color: var(--cardBg);
     border-radius: 15px;
     padding: var(--sp-3);
+}
+
+.objective-subtask-list {
+    padding: var(--sp-2) var(--sp-1) var(--sp-2) var(--sp-5);
 }
 
 .objective-actions {

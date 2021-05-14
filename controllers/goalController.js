@@ -15,7 +15,10 @@ exports.store = async (req, res) => {
 }
 
 exports.show = async (req, res) => {
-    const goal = await Goal.findById(req.params.id).populate('objectives')
+    const goal = await Goal.findById(req.params.id).populate({
+        path: 'objectives',
+        populate: { path: 'subtasks', match: { completed: { $eq: false } } },
+    })
 
     res.render('showGoal', { title: goal.name, goal })
 }

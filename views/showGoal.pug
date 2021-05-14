@@ -20,6 +20,12 @@ block narrow-content
       li
         span 
           a(href=`/goals/${goal.id}/objectives/${objective.id}`) #{objective.text}
+
+          if objective.subtasks.length > 0
+            ul.objective-subtask-list
+              each subtask in objective.subtasks
+                li= subtask.text
+
         .objective-actions
           form(action=`/goals/${goal.id}/objectives/${objective.id}/complete?_method=PUT` method="POST")
             input(type="hidden" name="completed" value="1")
@@ -46,8 +52,3 @@ block narrow-content
               input(type="hidden" name="completed" value="0")
               button(type="submit" class="icon-btn btn-transparent")
                 +x-circle
-
-  //- hr
-  //- h2 Actions
-  //- form(action=`/objectives/${objective.id}?_method=DELETE` method="POST")
-  //-   input(type="submit" value="Delete")
