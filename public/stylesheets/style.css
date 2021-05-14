@@ -103,6 +103,13 @@ button svg {
     padding-right: var(--sp-1);
 }
 
+.btn-link {
+    background: transparent !important;
+    border-color: transparent !important;
+    color: var(--linkColor);
+    text-decoration: underline;
+}
+
 .btn-transparent {
     background: transparent;
     border-color: transparent;

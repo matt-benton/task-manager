@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const Goal = mongoose.model('Goal')
+const Objective = mongoose.model('Objective')
+const Subtask = mongoose.model('Subtask')
 
 exports.index = async (req, res) => {
     const goals = await Goal.find().sort({ name: 1 })
@@ -28,4 +30,19 @@ exports.update = async (req, res) => {
     await Goal.findOneAndUpdate({ _id: req.params.id }, req.body).exec()
 
     res.redirect(`/goals/${req.params.id}`)
+}
+
+exports.destroy = async (req, res) => {
+    await Goal.findOneAndDelete({ _id: req.params.goal_id }, async function (err, goal) {
+        goal.objectives.forEach(async objective => {
+            await Objective.findOneAndDelete(
+                { _id: objective._id },
+                async function (err, objective) {
+                    await Subtask.deleteMany({ objective: objective._id })
+                },
+            )
+        })
+    })
+
+    res.redirect('/')
 }
