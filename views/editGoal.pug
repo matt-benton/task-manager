@@ -4,8 +4,10 @@ block narrow-content
 
   h1= `Edit ${goal.name}`
   form(action=`/goals/${goal.id}?_method=PUT` method="POST") 
-    label(for="name") Name 
-    input(type="text" id="name" name="name" value=`${goal.name}`)
-    label(for="description") Description
-    textarea(name="description" id="description")= goal.description
+    .form-group 
+      label(for="name") Name 
+      input(type="text" id="name" name="name" value=`${goal.name}`)
+    .form-group 
+      label(for="description") Description
+      textarea(name="description" id="description" rows="4")= goal.description
     input(type="submit" value="Save")

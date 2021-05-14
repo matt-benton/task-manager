@@ -4,6 +4,7 @@ block narrow-content
 
   h1= `Edit ${objective.text}`
   form(action=`/goals/${objective.goal.id}/objectives/${objective.id}?_method=PUT` method="POST") 
+    .form-group
       label(for="text") Text
       textarea(name="text" id="text")= objective.text
-      input(type="submit" value="Save")
+    input(type="submit" value="Save")
