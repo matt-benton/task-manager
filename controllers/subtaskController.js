@@ -15,7 +15,7 @@ exports.store = async (req, res) => {
 
     await objective.save()
 
-    res.redirect(`/goals/${objective.goal.id}/objectives/${objective._id}`)
+    res.redirect(`/goals/${objective.goal._id}/objectives/${req.params.objective_id}`)
 }
 
 exports.update = async (req, res) => {
@@ -24,7 +24,7 @@ exports.update = async (req, res) => {
     // need the goal id to redirect
     let objective = await Objective.findById(req.params.objective_id)
 
-    res.redirect(`/goals/${objective.goal.id}/objectives/${req.params.objective_id}`)
+    res.redirect(`/goals/${objective.goal._id}/objectives/${req.params.objective_id}`)
 }
 
 exports.destroy = async (req, res) => {
@@ -37,5 +37,5 @@ exports.destroy = async (req, res) => {
     // delete the subtask
     await Subtask.findByIdAndDelete(req.params.subtask_id)
 
-    res.redirect(`/goals/${objective.goal.id}/objectives/${req.params.objective_id}`)
+    res.redirect(`/goals/${objective.goal._id}/objectives/${req.params.objective_id}`)
 }

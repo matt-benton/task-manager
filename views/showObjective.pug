@@ -8,8 +8,8 @@ include mixins/icons/_pencil
 block narrow-content
 
   h1= objective.text 
+    span &nbsp;
     if (objective.completed)
-      span &nbsp;
       span.badge.badge-sm= "Complete"
       span &nbsp;
     a(href=`/goals/${objective.goal.id}/objectives/${objective.id}/edit`)
@@ -32,8 +32,9 @@ block narrow-content
 
   
   form(action=`/objectives/${objective.id}/subtasks` method="POST")
-    input(type="text" name="text")
-    input(type="submit" value="Add")
+    .input-row
+      input(type="text" name="text")
+      input(type="submit" value="Add")
 
   if objective.subtasks.filter(task => task.completed).length > 0
     h4 Completed Subtasks

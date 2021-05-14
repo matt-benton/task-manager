@@ -30,8 +30,9 @@ block narrow-content
               +trash
   
   form(action=`/goals/${goal.id}/objectives` method="POST")
-    input(type="text" name="text")
-    input(type="submit" value="Add")
+    .input-row
+      input(type="text" name="text")
+      input(type="submit" value="Add")
     
   if goal.objectives.filter(obj => obj.completed).length > 0
     h4 Completed Objectives
