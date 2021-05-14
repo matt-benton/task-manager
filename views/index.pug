@@ -2,17 +2,20 @@ extends layout
 
 block content
   h1= title
-  p Welcome to my #{title}
   ul#goals-list
     each goal in goals
       li
         a(href=`/goals/${goal.id}`)
           .goal-card= goal.name
   hr
-  p Goals are somewhat vague, long-term life accomplishments.  You can think of them more like directions that you want to direct yourself towards or characteristics you would like to adopt for yourself.  Add goals and then add objectives that are concrete steps towards achieving those goals.
-  form(action="/goals" method="POST")
-    label(for="name") Name
-    input(type="text" name="name" id="name")
-    label(for="description") Description
-    textarea(name="description" id="description")
-    input(type="submit" value="Submit")
+  .add-goal-form
+    h3 Add a Goal
+    p Goals are somewhat vague, long-term life accomplishments.  You can think of them more like directions that you want to direct yourself towards or characteristics you would like to adopt for yourself.  Add goals and then add objectives that are concrete steps towards achieving those goals.
+    form(action="/goals" method="POST")
+      .form-group
+        label(for="name") Name
+        input(type="text" name="name" id="name")
+      .form-group
+        label(for="description") Description
+        textarea(name="description" id="description" rows="4")
+      input(type="submit" value="Submit")

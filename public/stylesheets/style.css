@@ -9,7 +9,7 @@ body {
     font-size: var(--text-base);
     background-color: var(--backgroundColor);
     margin: var(--sp-1) auto;
-    padding: 0 var(--sp-3);
+    padding: 0 var(--sp-3) 500px var(--sp-3);
     max-width: 1200px;
 }
 
@@ -53,6 +53,11 @@ input[type='text'] {
     line-height: 1.2;
 }
 
+textarea {
+    border: 1px solid rgb(188, 180, 180);
+    border-radius: 5px;
+}
+
 button,
 input[type='submit'] {
     font-size: var(--text-base);
@@ -68,6 +73,16 @@ input[type='submit'] {
     vertical-align: center;
     background-color: var(--buttonBg);
     transition: background-color 0.3s;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--sp-2);
+}
+
+.form-group > label {
+    margin-bottom: var(--sp-1);
 }
 
 .input-row {
@@ -112,11 +127,16 @@ button svg {
 .goal-card {
     border: 1px solid #000;
     border-radius: 15px;
-    padding: var(--sp-9);
+    padding: var(--sp-8);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: var(--text-3xl);
+    font-size: var(--text-2xl);
+}
+
+.add-goal-form {
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .objectives-list {

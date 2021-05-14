@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Goal = mongoose.model('Goal')
 
 exports.index = async (req, res) => {
-    const goals = await Goal.find()
+    const goals = await Goal.find().sort({ name: 1 })
 
     res.render('index', { title: 'Goals', goals })
 }
