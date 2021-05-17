@@ -4,7 +4,7 @@ doctype html
 html
   head
     title= title
-    link(rel="preconncect", href="https://fonts.gstatic.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com")
     link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap") 
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
@@ -17,6 +17,9 @@ html
     block messages 
       if locals.flashes
         - const categories = Object.keys(locals.flashes)
-        each category in categories 
-          each message in flashes[category]
-            p= message
+        .flash-container
+          each category in categories 
+            each message in flashes[category]
+              .flash
+                p= message
+                button.flash-button(onClick="this.parentElement.remove()") &times;

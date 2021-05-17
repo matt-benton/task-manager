@@ -190,3 +190,41 @@ button svg {
 .badge-sm {
     font-size: var(--text-base);
 }
+
+.flash-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.flash {
+    background-color: rgb(72, 173, 126);
+    position: fixed;
+    bottom: 0;
+    margin: var(--sp-5) auto;
+    padding: 0 var(--sp-7);
+    border-radius: 5px;
+    animation-name: slidein;
+    animation-duration: 0.8s;
+    z-index: 9999;
+    display: flex;
+}
+
+.flash-button {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+@keyframes slidein {
+    from {
+        bottom: -100px;
+    }
+
+    to {
+        bottom: 0;
+    }
+}
