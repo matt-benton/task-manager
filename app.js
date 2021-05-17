@@ -5,6 +5,9 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 const mongoose = require('mongoose')
+const flash = require('connect-flash')
+const helpers = require('./helpers')
+const session = require('express-session')
 
 // connect to database
 mongoose.connect('mongodb://localhost/task-manager', {
@@ -26,6 +29,25 @@ var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 
 var app = express()
+
+// Sessions allow us to store data on visitors from request to request
+// This keeps users logged in and allows us to send flash messages
+app.use(
+    session({
+        secret: 'kitty',
+        resave: false,
+        saveUninitialized: true,
+    }),
+)
+
+// middleware for flashing messages
+app.use(flash())
+
+app.use((req, res, next) => {
+    res.locals.h = helpers
+    res.locals.flashes = req.flash()
+    next()
+})
 
 // allow using methods such as DELETE and PUT
 app.use(methodOverride('_method'))

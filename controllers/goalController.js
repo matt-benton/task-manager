@@ -11,6 +11,7 @@ exports.index = async (req, res) => {
 
 exports.store = async (req, res) => {
     await new Goal(req.body).save()
+    req.flash('success', 'Goal saved successfully.')
     res.redirect('/')
 }
 
@@ -46,6 +47,8 @@ exports.destroy = async (req, res) => {
             )
         })
     })
+
+    req.flash('success', 'Goal removed successfully.')
 
     res.redirect('/')
 }

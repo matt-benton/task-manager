@@ -14,3 +14,9 @@ html
     block content
     .narrow-content
       block narrow-content
+    block messages 
+      if locals.flashes
+        - const categories = Object.keys(locals.flashes)
+        each category in categories 
+          each message in flashes[category]
+            p= message
