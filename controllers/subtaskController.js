@@ -15,6 +15,8 @@ exports.store = async (req, res) => {
 
     await objective.save()
 
+    req.flash('success', 'Subtask added successfully.')
+
     res.redirect(`/goals/${objective.goal._id}/objectives/${req.params.objective_id}`)
 }
 
@@ -36,6 +38,8 @@ exports.destroy = async (req, res) => {
 
     // delete the subtask
     await Subtask.findByIdAndDelete(req.params.subtask_id)
+
+    req.flash('success', 'Subtask removed successfully.')
 
     res.redirect(`/goals/${objective.goal._id}/objectives/${req.params.objective_id}`)
 }

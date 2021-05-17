@@ -32,7 +32,7 @@ exports.edit = async (req, res) => {
 
 exports.update = async (req, res) => {
     await Goal.findOneAndUpdate({ _id: req.params.id }, req.body).exec()
-
+    req.flash('success', 'Goal updated successfully.')
     res.redirect(`/goals/${req.params.id}`)
 }
 

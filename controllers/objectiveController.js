@@ -16,6 +16,8 @@ exports.store = async (req, res) => {
 
     await goal.save()
 
+    req.flash('success', 'Objective added successfully.')
+
     res.redirect(`/goals/${goal._id}`)
 }
 
@@ -36,6 +38,8 @@ exports.edit = async (req, res) => {
 exports.update = async (req, res) => {
     await Objective.findOneAndUpdate({ _id: req.params.objective_id }, req.body).exec()
 
+    req.flash('success', 'Objective updated successfully.')
+
     res.redirect(`/goals/${req.params.goal_id}/objectives/${req.params.objective_id}`)
 }
 
@@ -52,6 +56,8 @@ exports.destroy = async (req, res) => {
             await Subtask.deleteMany({ objective: objective._id })
         },
     )
+
+    req.flash('success', 'Objective removed successfully.')
 
     res.redirect(`/goals/${req.params.goal_id}`)
 }
