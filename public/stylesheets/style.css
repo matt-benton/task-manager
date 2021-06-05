@@ -192,31 +192,44 @@ button svg {
 }
 
 .flash-container {
-    width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    position: relative;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: var(--sp-7);
 }
 
 .flash {
-    background-color: rgb(72, 173, 126);
-    position: fixed;
-    bottom: 0;
-    margin: var(--sp-5) auto;
-    padding: 0 var(--sp-7);
+    width: 400px;
+    margin: var(--sp-2) auto;
+    padding: 0 var(--sp-5);
     border-radius: 5px;
     animation-name: slidein;
     animation-duration: 0.8s;
     z-index: 9999;
     display: flex;
+    color: var(--white);
+    position: relative;
+}
+
+.flash--success {
+    background-color: var(--green);
+}
+
+.flash--error {
+    background-color: var(--red);
 }
 
 .flash-button {
     position: absolute;
-    right: 0;
+    right: 10px;
     top: 10px;
     background-color: transparent;
     border: 1px solid transparent;
+    color: var(--white);
 }
 
 @keyframes slidein {

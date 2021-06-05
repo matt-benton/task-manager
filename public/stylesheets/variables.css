@@ -3,8 +3,10 @@
     --backgroundColor: #f5f5f5;
     --textReverse: #fdfdfd;
     --cardBg: #fdfdfd;
-    --green: #199749;
+    --green: rgb(72, 173, 126);
+    --red: #d63535;
     --buttonBg: rgb(243, 238, 233);
+    --white: #fff;
 
     /* font size */
     --text-xs: 1.2rem;

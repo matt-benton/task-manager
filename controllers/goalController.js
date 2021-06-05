@@ -10,7 +10,15 @@ exports.index = async (req, res) => {
 }
 
 exports.store = async (req, res) => {
-    await new Goal(req.body).save()
+    try {
+        await new Goal(req.body).save()
+    } catch (err) {
+        const errorKeys = Object.keys(err.errors)
+        errorKeys.forEach(key => req.flash('error', err.errors[key].message))
+
+        res.redirect('back')
+    }
+
     req.flash('success', 'Goal saved successfully.')
     res.redirect('/')
 }

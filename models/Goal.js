@@ -4,10 +4,12 @@ mongoose.Promise = global.Promise
 const goalSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        trim: true,
+        required: 'Please enter a goal name',
     },
     description: {
         type: String,
+        trim: true,
     },
     objectives: [
         {

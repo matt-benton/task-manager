@@ -20,6 +20,6 @@ html
         .flash-container
           each category in categories 
             each message in flashes[category]
-              .flash
+              .flash(class=`flash--${category}`)
                 p= message
                 button.flash-button(onClick="this.parentElement.remove()") &times;
