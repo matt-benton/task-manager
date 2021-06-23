@@ -39,7 +39,17 @@ exports.edit = async (req, res) => {
 }
 
 exports.update = async (req, res) => {
-    await Goal.findOneAndUpdate({ _id: req.params.id }, req.body).exec()
+    try {
+        await Goal.findOneAndUpdate({ _id: req.params.id }, req.body, {
+            runValidators: true,
+        }).exec()
+    } catch (err) {
+        const errorKeys = Object.keys(err.errors)
+        errorKeys.forEach(key => req.flash('error', err.errors[key].message))
+
+        res.redirect('back')
+    }
+
     req.flash('success', 'Goal updated successfully.')
     res.redirect(`/goals/${req.params.id}`)
 }
