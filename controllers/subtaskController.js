@@ -3,17 +3,24 @@ const Subtask = mongoose.model('Subtask')
 const Objective = mongoose.model('Objective')
 
 exports.store = async (req, res) => {
-    let objective = await Objective.findById(req.params.objective_id)
+    try {
+        var objective = await Objective.findById(req.params.objective_id)
 
-    let subtask = await new Subtask({
-        text: req.body.text,
-        objective: objective._id,
-    })
-    await subtask.save()
+        let subtask = await new Subtask({
+            text: req.body.text,
+            objective: objective._id,
+        })
+        await subtask.save()
 
-    objective.subtasks.push(subtask._id)
+        objective.subtasks.push(subtask._id)
 
-    await objective.save()
+        await objective.save()
+    } catch (err) {
+        const errorKeys = Object.keys(err.errors)
+        errorKeys.forEach(key => req.flash('error', err.errors[key].message))
+
+        res.redirect('back')
+    }
 
     req.flash('success', 'Subtask added successfully.')
 
@@ -21,7 +28,16 @@ exports.store = async (req, res) => {
 }
 
 exports.update = async (req, res) => {
-    await Subtask.findOneAndUpdate({ _id: req.params.subtask_id }, req.body).exec()
+    try {
+        await Subtask.findOneAndUpdate({ _id: req.params.subtask_id }, req.body, {
+            runValidators: true,
+        }).exec()
+    } catch (err) {
+        const errorKeys = Object.keys(err.errors)
+        errorKeys.forEach(key => req.flash('error', err.errors[key].message))
+
+        res.redirect('back')
+    }
 
     // need the goal id to redirect
     let objective = await Objective.findById(req.params.objective_id)

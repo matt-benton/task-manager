@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise
 const subtaskSchema = new mongoose.Schema({
     text: {
         type: String,
-        required: true,
+        required: 'Please enter the subtask text',
     },
     completed: {
         type: Boolean,
