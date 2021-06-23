@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise
 const objectiveSchema = new mongoose.Schema({
     text: {
         type: String,
-        required: true,
+        required: 'Please enter the objective text',
     },
     completed: {
         type: Boolean,
